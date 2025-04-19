@@ -27,11 +27,18 @@ Run the following command to install the required Python packages:
 pip install ipykernel openai pandas requests tiktoken pypdf matplotlib ipython
 ```
 
-## 4. Run the Notebook
+Please format the below section
+in markdown code block.
 
-Navigate to the `notebooks` directory and open the `CreativeAIMiniKit.ipynb` file in Jupyter Notebook or JupyterLab:
+### 3.1 Required Packages
 
-```powershell
-cd notebooks
-jupyter notebook CreativeAIMiniKit.ipynb
-```
+> 1. openai: This package is used for accessing the OpenAI API.
+> 1. pandas: This package is used for handling tabular data.
+> 1. requests: This package is used for downloading files.
+> 1. datetime from datetime: This module is required for getting the timestamp.
+> 1. pprint from pprint: This module is required for pretty printing text in Python.
+> 1. tiktoken: This package is required for counting the number of tokens in a string.
+> 1. PdfReader from pypdf: This module is required for handling PDF files.
+> 1. Markdown, and display from IPython.display: These modules are required for loading and displaying markdown content in the notebook.
+> 1. os: This package is required to access operating system resources.
+> 1. pyplot and image from matplotlib: These modules are required for displaying images in the notebook.

@@ -18,3 +18,20 @@ source .venv/bin/activate # macOS/Linux
 
 python.exe -m pip install --upgrade pip
 ```
+
+## 3. Install Required Packages
+
+Run the following command to install the required Python packages:
+
+```powershell
+pip install ipykernel openai pandas requests tiktoken pypdf matplotlib ipython
+```
+
+## 4. Run the Notebook
+
+Navigate to the `notebooks` directory and open the `CreativeAIMiniKit.ipynb` file in Jupyter Notebook or JupyterLab:
+
+```powershell
+cd notebooks
+jupyter notebook CreativeAIMiniKit.ipynb
+```

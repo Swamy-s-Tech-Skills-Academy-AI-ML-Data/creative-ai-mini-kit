@@ -24,7 +24,7 @@ python.exe -m pip install --upgrade pip
 Run the following command to install the required Python packages:
 
 ```powershell
-pip install ipykernel openai pandas requests tiktoken pypdf matplotlib ipython
+pip install ipykernel openai pandas requests tiktoken pypdf matplotlib ipython jinja2
 ```
 
 Please format the below section

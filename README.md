@@ -27,9 +27,6 @@ Run the following command to install the required Python packages:
 pip install ipykernel openai pandas requests tiktoken pypdf matplotlib ipython jinja2
 ```
 
-Please format the below section
-in markdown code block.
-
 ### 3.1 Required Packages
 
 > 1. openai: This package is used for accessing the OpenAI API.

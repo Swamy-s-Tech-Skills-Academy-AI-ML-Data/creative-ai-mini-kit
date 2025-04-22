@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'tailwind',
     
     # Custom theme app for Tailwind CSS
-    # 'theme',  # Temporarily commented out until we create the theme app
+    'theme',
     
     # Project apps
     'api',
@@ -57,10 +57,10 @@ INSTALLED_APPS = [
     'frontend',
 ]
 
-# Tailwind CSS configuration - temporarily commented out
-# TAILWIND_APP_NAME = 'theme'
-# TAILWIND_CSS_VERSION = '3.4.17'
-# NPM_BIN_PATH = 'npm'  # Path to npm executable
+# Tailwind CSS configuration
+TAILWIND_APP_NAME = 'theme'
+TAILWIND_CSS_VERSION = '3.4.17'
+NPM_BIN_PATH = 'npm'  # Path to npm executable
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

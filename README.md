@@ -86,6 +86,8 @@ The Creative AI Mini Kit now includes a web application built with Django, Djang
 ```powershell
 # Install required packages for the web application
 pip install django djangorestframework django-tailwind django-compressor python-dotenv pillow gunicorn whitenoise dj-database-url
+
+pip install django djangorestframework django-tailwind python-dotenv
 ```
 
 ### 4.4 Create Django Project Structure in src Directory
@@ -95,7 +97,7 @@ pip install django djangorestframework django-tailwind django-compressor python-
 cd src
 
 # Start a new Django project
-django-admin startproject creative_ai_web .
+django-admin startproject caimk_web .
 
 # Create necessary apps
 python manage.py startapp api
@@ -270,7 +272,7 @@ creative-ai-mini-kit/
     │   ├── services.py
     │   ├── urls.py
     │   └── views.py
-    ├── creative_ai_web/
+    ├── caimk_web/
     │   ├── settings.py
     │   ├── urls.py
     │   └── wsgi.py

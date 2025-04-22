@@ -60,7 +60,7 @@ INSTALLED_APPS = [
 # Tailwind CSS configuration
 TAILWIND_APP_NAME = 'theme'
 TAILWIND_CSS_VERSION = '3.4.17'
-NPM_BIN_PATH = 'npm'  # Path to npm executable
+NPM_BIN_PATH = r'C:\Program Files\nodejs\npm.cmd'  # Updated path to npm executable
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

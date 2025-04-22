@@ -118,6 +118,8 @@ mkdir -p frontend/static/icons
 
 Tailwind CSS provides a utility-first CSS framework that will help us create a modern, responsive interface without writing custom CSS. We'll set it up using django-tailwind:
 
+To find the path of npm `Get-Command npm | Format-List`
+
 ```powershell
 # Navigate to the src directory if you're not already there
 cd src

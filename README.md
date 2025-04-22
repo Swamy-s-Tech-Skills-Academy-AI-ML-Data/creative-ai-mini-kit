@@ -67,6 +67,9 @@ The Creative AI Mini Kit now includes a web application built with Django, Djang
 - **Code Generation**: Create Python code from natural language descriptions
 - **Modern UI**: Responsive design with Tailwind CSS
 - **RESTful API**: Powerful backend API built with Django REST Framework
+- **Custom Typography**: Integration with Google Fonts for beautiful typography
+- **Modern Icons**: Font Awesome icons for enhanced user interface elements
+- **Professional Branding**: Custom favicon for browser tab recognition
 
 ### 4.2 Prerequisites for Web Application (Windows 11)
 
@@ -151,6 +154,96 @@ python manage.py runserver
 ```
 
 Access the web application at http://127.0.0.1:8000/
+
+### 4.10 Enhance UI with Google Fonts, Font Awesome, and Favicon
+
+#### 4.10.1 Add Google Fonts
+
+1. Choose fonts from [Google Fonts](https://fonts.google.com/)
+2. Add the font links to your base template:
+
+```html
+<!-- In your base.html template -->
+<head>
+    <!-- ... other head elements ... -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- ... other head elements ... -->
+</head>
+```
+
+3. Configure the fonts in your Tailwind CSS configuration:
+
+```javascript
+// In theme/static_src/tailwind.config.js
+module.exports = {
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+                heading: ['Poppins', 'sans-serif'],
+            },
+        },
+    },
+    // ... other configuration options
+}
+```
+
+#### 4.10.2 Add Font Awesome Icons
+
+1. Install Font Awesome using npm (within the theme directory):
+
+```powershell
+cd theme
+npm install @fortawesome/fontawesome-free
+```
+
+2. Import Font Awesome in your CSS:
+
+```css
+/* In theme/static_src/src/styles.css */
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+```
+
+3. Use icons in your templates:
+
+```html
+<!-- Example usage -->
+<i class="fas fa-envelope"></i> <!-- Email icon -->
+<i class="fas fa-code"></i> <!-- Code icon -->
+<i class="fas fa-home"></i> <!-- Home icon -->
+```
+
+#### 4.10.3 Add Custom Favicon
+
+1. Create or obtain your favicon file (favicon.ico)
+2. Place it in the `frontend/static/images/` directory
+3. Link to the favicon in your base template:
+
+```html
+<!-- In your base.html template -->
+<head>
+    <!-- ... other head elements ... -->
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <!-- ... other head elements ... -->
+</head>
+```
+
+4. Ensure your template loads the static files:
+
+```html
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- ... head content ... -->
+</head>
+<body>
+    <!-- ... body content ... -->
+</body>
+</html>
+```
 
 ## 5. Project Structure
 

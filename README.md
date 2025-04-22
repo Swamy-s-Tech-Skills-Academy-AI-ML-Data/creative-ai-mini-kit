@@ -88,6 +88,7 @@ The Creative AI Mini Kit now includes a web application built with Django, Djang
 pip install django djangorestframework django-tailwind django-compressor python-dotenv pillow gunicorn whitenoise dj-database-url
 
 pip install django djangorestframework django-tailwind python-dotenv
+pip install django-tailwind==3.4.0 
 ```
 
 ### 4.4 Create Django Project Structure in src Directory

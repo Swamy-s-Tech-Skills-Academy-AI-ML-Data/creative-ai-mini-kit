@@ -105,6 +105,7 @@ python manage.py startapp api
 python manage.py startapp email_generator
 python manage.py startapp code_generator
 python manage.py startapp frontend
+python manage.py startapp theme
 
 # Create static files directories
 mkdir -p frontend/static/css

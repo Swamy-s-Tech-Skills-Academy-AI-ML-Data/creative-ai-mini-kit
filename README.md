@@ -88,7 +88,7 @@ The Creative AI Mini Kit now includes a web application built with Django, Djang
 pip install django djangorestframework django-tailwind django-compressor python-dotenv pillow gunicorn whitenoise dj-database-url
 
 pip install django djangorestframework django-tailwind python-dotenv
-pip install django-tailwind==3.4.0 
+pip install django-tailwind==3.4.0
 ```
 
 ### 4.4 Create Django Project Structure in src Directory
@@ -105,6 +105,12 @@ python manage.py startapp api
 python manage.py startapp email_generator
 python manage.py startapp code_generator
 python manage.py startapp frontend
+
+# Create static files directories
+mkdir -p frontend/static/css
+mkdir -p frontend/static/js
+mkdir -p frontend/static/images
+mkdir -p frontend/static/icons
 ```
 
 ### 4.5 Setup Tailwind CSS
@@ -126,6 +132,7 @@ python manage.py tailwind build
 ```
 
 What happens in these steps:
+
 1. We create a new Django app called "theme" that will handle Tailwind CSS
 2. We install Tailwind's dependencies using npm (Node.js package manager)
 3. We compile the CSS from Tailwind's utility classes
@@ -150,14 +157,14 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     # ...
-    
+
     # Third-party apps
     'rest_framework',
     'tailwind',
-    
+
     # Tailwind theme app
     'theme',
-    
+
     # Project apps
     'api',
     'email_generator',
@@ -188,6 +195,7 @@ STATICFILES_DIRS = [
 Now we'll create the foundation of our UI - a base template with a consistent navbar and footer that will be used across all pages.
 
 1. Create template directories structure:
+
 ```
 src/frontend/templates/
 ├── base.html
@@ -201,6 +209,7 @@ src/frontend/templates/
 ```
 
 2. In `base.html`, we'll create the main layout that includes:
+
    - HTML5 doctype and responsive viewport
    - Google Fonts integration
    - Navbar component
@@ -209,6 +218,7 @@ src/frontend/templates/
    - JavaScript for interactive elements
 
 3. In the navbar component, we'll include:
+
    - Logo/Project name
    - Navigation links to all sections
    - Mobile-responsive menu
@@ -270,6 +280,7 @@ Next, we'll implement the email generation feature:
 4. Display the generated email to the user
 
 The implementation will involve:
+
 - Creating a form class in `email_generator/forms.py`
 - Setting up the view logic in `email_generator/views.py`
 - Creating templates for the form and results
@@ -296,6 +307,7 @@ Finally, we'll create API endpoints using Django REST Framework:
 3. Configure URL routing for the API
 
 This will allow:
+
 - Frontend to make AJAX requests to our backend
 - Other applications to integrate with our toolkit
 - Separation of concerns between frontend and backend logic

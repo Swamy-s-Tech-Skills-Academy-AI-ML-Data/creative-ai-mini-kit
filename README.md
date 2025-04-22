@@ -88,15 +88,14 @@ The Creative AI Mini Kit now includes a web application built with Django, Djang
 pip install django djangorestframework django-tailwind django-compressor python-dotenv pillow gunicorn whitenoise dj-database-url
 ```
 
-### 4.4 Create Django Project Structure
+### 4.4 Create Django Project Structure in src Directory
 
 ```powershell
-# Create the web_app directory if it doesn't exist
-mkdir web_app
-cd web_app
+# Navigate to the src directory
+cd src
 
 # Start a new Django project
-django-admin startproject core .
+django-admin startproject creative_ai_web .
 
 # Create necessary apps
 python manage.py startapp api
@@ -120,7 +119,7 @@ python manage.py tailwind build
 
 ### 4.6 Configure Environment Variables
 
-Create a `.env` file in the web_app directory with the following variables:
+Create a `.env` file in the src directory with the following variables:
 
 ```
 DEBUG=True
@@ -259,15 +258,19 @@ creative-ai-mini-kit/
 │   ├── generatedcode/
 │   │   └── python/
 │   └── reviews/
-├── src/
-└── web_app/
+└── src/
     ├── api/
     │   ├── migrations/
     │   ├── models.py
     │   ├── serializers.py
     │   ├── urls.py
     │   └── views.py
-    ├── core/
+    ├── code_generator/
+    │   ├── forms.py
+    │   ├── services.py
+    │   ├── urls.py
+    │   └── views.py
+    ├── creative_ai_web/
     │   ├── settings.py
     │   ├── urls.py
     │   └── wsgi.py
@@ -276,13 +279,12 @@ creative-ai-mini-kit/
     │   ├── services.py
     │   ├── urls.py
     │   └── views.py
-    ├── code_generator/
-    │   ├── forms.py
-    │   ├── services.py
-    │   ├── urls.py
-    │   └── views.py
     ├── frontend/
     │   ├── static/
+    │   │   ├── css/
+    │   │   ├── images/
+    │   │   │   └── favicon.ico
+    │   │   └── js/
     │   └── templates/
     ├── theme/
     │   └── static_src/

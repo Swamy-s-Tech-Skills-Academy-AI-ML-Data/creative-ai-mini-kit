@@ -29,6 +29,64 @@
   - Python with OpenAI API
   - Django web application (optional mention if time permits)
 
+### Architecture Diagram
+
+```mermaid
+graph TD
+    subgraph "Creative AI Mini Kit"
+        subgraph "Backend Components"
+            OpenAIAPI[OpenAI API]
+            GPT["GPT-3.5/4 Models"]
+            DALLE["DALL-E 3 Model"]
+            
+            APIKey["API Key Management"]
+            
+            OpenAIAPI --> GPT
+            OpenAIAPI --> DALLE
+            APIKey --> OpenAIAPI
+        end
+        
+        subgraph "Core Functionalities"
+            EmailGen["Email Generation Engine"]
+            CodeGen["Code Generation Engine"]
+            TextSum["Text Summarization"]
+            ImgGen["Image Generation"]
+            
+            GPT --> EmailGen
+            GPT --> CodeGen
+            GPT --> TextSum
+            DALLE --> ImgGen
+        end
+        
+        subgraph "Data Processing"
+            ReviewInput["Customer Review Input"]
+            CodePrompt["Natural Language Code Description"]
+            FileStorage["Generated Files Storage"]
+            
+            ReviewInput --> EmailGen
+            CodePrompt --> CodeGen
+            EmailGen --> FileStorage
+            CodeGen --> FileStorage
+        end
+        
+        subgraph "Web Interface (Django)"
+            Frontend["Frontend (HTML/CSS/JS)"]
+            API["Django REST API"]
+            TailwindCSS["Tailwind CSS"]
+            
+            API --> EmailGen
+            API --> CodeGen
+            TailwindCSS --> Frontend
+            Frontend --> API
+        end
+    end
+    
+    User["End User"] --> Frontend
+    User --> ReviewInput
+    User --> CodePrompt
+    FileStorage --> User
+```
+
 ---
 
 ## Part 1: Environment Setup (5 minutes)

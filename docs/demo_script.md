@@ -11,6 +11,7 @@
 ## Introduction (5 minutes)
 
 ### Opening (2 minutes)
+
 - Welcome participants to the session
 - Introduce yourself and your background
 - Share the session objectives:
@@ -19,6 +20,7 @@
   - Showcase the Creative AI Mini Kit's functionality
 
 ### Overview of Creative AI Mini Kit (3 minutes)
+
 - Explain what the Creative AI Mini Kit is:
   - A compact toolkit leveraging OpenAI's models
   - Built for AI-driven creativity and efficiency
@@ -32,6 +34,7 @@
 ## Part 1: Environment Setup (5 minutes)
 
 ### Required Libraries Walkthrough (2 minutes)
+
 - Show the import section of the notebook
 - Explain key libraries:
   ```python
@@ -44,6 +47,7 @@
 - Briefly explain why each is important for the demo
 
 ### API Configuration (3 minutes)
+
 - Demonstrate how to set up OpenAI API key
 - Show how to configure the OpenAI client
 - Explain best practices for API key management (environment variables)
@@ -54,17 +58,20 @@
 ## Part 2: Email Generation from Customer Reviews (15 minutes)
 
 ### Introduction to Use Case (2 minutes)
+
 - Business problem: Responding to customer reviews efficiently
 - Value proposition: Save time while maintaining personalization
 - Demo structure: From customer reviews to professional emails
 
 ### Loading and Processing Reviews (3 minutes)
+
 - Show how to:
   - Read customer reviews from text files
   - Create a structured DataFrame for processing
   - Display sample reviews to the audience
 
 ### Generating Response Emails (5 minutes)
+
 - Demonstrate the API call to OpenAI
 - Explain the system prompt and importance of clear instructions
 - Show how the email generation function works:
@@ -80,6 +87,7 @@
   ```
 
 ### Results Analysis (5 minutes)
+
 - Review generated emails:
   - Show examples of positive review responses
   - Show examples of addressing customer concerns
@@ -94,11 +102,13 @@
 ## Part 3: Code Generation from Natural Language (15 minutes)
 
 ### Introduction to Use Case (2 minutes)
+
 - Business problem: Streamlining development process
 - Value proposition: From requirement to working code
 - Use cases: Prototyping, solving common problems, learning
 
 ### Code Generation Function (3 minutes)
+
 - Walk through the code generation function:
   ```python
   def generate_python_code(description):
@@ -116,6 +126,7 @@
 - Explain the importance of the system prompt for quality results
 
 ### Demonstrations (10 minutes)
+
 - Show examples of generated code for:
   1. Data processing (CSV file processing example)
   2. Algorithm implementation (binary search or sorting)
@@ -132,18 +143,21 @@
 ## Conclusion (5 minutes)
 
 ### Recap of Demonstrated Capabilities (2 minutes)
+
 - Summarize what we've demonstrated:
   - Email generation for customer service
   - Code generation for development tasks
   - The power of properly structured prompts
 
 ### Potential Business Applications (2 minutes)
+
 - Customer service automation
 - Developer productivity enhancement
 - Content generation for marketing
 - Knowledge management
 
 ### Q&A Preparation (1 minute)
+
 - What to expect in the Q&A session
 - Additional resources available
 
@@ -152,17 +166,20 @@
 ## Live Demo Tips
 
 ### Pre-Demo Preparation
+
 - Ensure OpenAI API key is properly set up
 - Run the notebook cells in advance to verify everything works
 - Have example reviews and code prompts ready to demonstrate
 - Prepare backup examples in case of API issues
 
 ### Technical Setup
+
 - Use a local environment with all dependencies installed
 - Have a backup internet connection if possible
 - Keep the API documentation handy for reference
 
 ### Presentation Tips
+
 - Explain concepts before showing code
 - Use simple, relatable examples
 - Highlight business value, not just technical implementation
@@ -177,15 +194,17 @@
 ## Example Demonstrations
 
 ### Email Generation Examples
+
 - Positive product review: Hiking boots or headphones example
 - Mixed review: Jacket with sizing issues
 - Detailed review: Smart watch with multiple points
 
 ### Code Generation Examples
+
 - Data analysis: Sales data processing function
 - Algorithm: Binary search implementation
 - Utility function: Text analysis or data transformation
 
 ---
 
-*Note: This script is flexible - adjust timing based on audience engagement and questions*
+_Note: This script is flexible - adjust timing based on audience engagement and questions_

@@ -15,9 +15,11 @@
 - Welcome participants to the session
 - Introduce yourself and your background
 - Share the session objectives:
-  - Demonstrate OpenAI API capabilities for business tasks
-  - Show practical applications for email generation and code creation
-  - Showcase the Creative AI Mini Kit's functionality
+  - Demonstrate OpenAI API capabilities for three key business scenarios:
+    1. Customer service automation through email generation
+    2. Developer productivity through code generation
+    3. Knowledge management through document summarization
+  - Show practical implementations with the Creative AI Mini Kit
 
 ### Overview of Creative AI Mini Kit (3 minutes)
 
@@ -342,13 +344,13 @@ def summarize_text(text, max_tokens=4000):
 
 ## Conclusion (5 minutes)
 
-### Recap of Demonstrated Capabilities (2 minutes)
+### Recap of Business Scenarios (2 minutes)
 
-- Summarize what we've demonstrated:
-  - Email generation for customer service
-  - Code generation for development tasks
-  - Text summarization for document processing
-  - The power of properly structured prompts
+- Summarize the three business scenarios we've demonstrated:
+  1. **Customer Service Automation**: Email generation for efficient, consistent customer responses
+  2. **Developer Productivity**: Code generation from natural language for faster development
+  3. **Knowledge Management**: Text summarization for extracting insights from documents
+- Highlight how each scenario leverages the power of properly structured prompts
 
 ### Potential Business Applications (2 minutes)
 
@@ -394,17 +396,23 @@ def summarize_text(text, max_tokens=4000):
 
 ## Example Demonstrations
 
-### Email Generation Examples
+### Business Scenario 1: Email Generation Examples
 
 - Positive product review: Hiking boots or headphones example
 - Mixed review: Jacket with sizing issues
 - Detailed review: Smart watch with multiple points
 
-### Code Generation Examples
+### Business Scenario 2: Code Generation Examples
 
 - Data analysis: Sales data processing function
 - Algorithm: Binary search implementation
 - Utility function: Text analysis or data transformation
+
+### Business Scenario 3: Document Summarization Examples
+
+- Academic paper: Attention is All You Need (transformer architecture)
+- Marketing material: Travel brochures for various cities
+- Technical documentation: API documentation or user manuals
 
 ---
 

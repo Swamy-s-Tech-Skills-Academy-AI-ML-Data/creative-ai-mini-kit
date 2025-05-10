@@ -15,76 +15,142 @@
 - Welcome participants to the session
 - Introduce yourself and your background
 - Share the session objectives:
-  - Demonstrate OpenAI API capabilities for business tasks
-  - Show practical applications for email generation and code creation
-  - Showcase the Creative AI Mini Kit's functionality
+  - Demonstrate OpenAI API capabilities for three key business scenarios:
+    1. Customer service automation through email generation
+    2. Developer productivity through code generation
+    3. Knowledge management through document summarization
+  - Show practical implementations with the Creative AI Mini Kit
 
 ### Overview of Creative AI Mini Kit (3 minutes)
 
 - Explain what the Creative AI Mini Kit is:
   - A compact toolkit leveraging OpenAI's models
   - Built for AI-driven creativity and efficiency
-  - Includes features for email response automation, code generation, and more
+  - Includes features for email response automation, code generation, and document processing
 - Briefly explain the tech stack:
   - Python with OpenAI API
   - Django web application (optional mention if time permits)
+- Introduce the three business scenarios we'll demonstrate:
+  1. Customer service email automation
+  2. Developer productivity with code generation
+  3. Knowledge management with document summarization
 
-### Architecture Diagram
+### Architecture Diagrams
+
+#### 1. Customer Service Scenario: Email Response Automation
 
 ```mermaid
 graph TD
-    subgraph "Creative AI Mini Kit"
+    subgraph "Customer Service Application"
         subgraph "Backend Components"
-            OpenAIAPI[OpenAI API]
-            GPT["GPT-3.5/4 Models"]
-            DALLE["DALL-E 3 Model"]
+            OpenAIAPI1[OpenAI API]
+            GPT1["GPT-3.5/4 Models"]
+            APIKey1["API Key Management"]
             
-            APIKey["API Key Management"]
-            
-            OpenAIAPI --> GPT
-            OpenAIAPI --> DALLE
-            APIKey --> OpenAIAPI
+            OpenAIAPI1 --> GPT1
+            APIKey1 --> OpenAIAPI1
         end
         
-        subgraph "Core Functionalities"
+        subgraph "Core Functionality"
             EmailGen["Email Generation Engine"]
-            CodeGen["Code Generation Engine"]
-            TextSum["Text Summarization"]
-            ImgGen["Image Generation"]
-            
-            GPT --> EmailGen
-            GPT --> CodeGen
-            GPT --> TextSum
-            DALLE --> ImgGen
+            GPT1 --> EmailGen
         end
         
         subgraph "Data Processing"
             ReviewInput["Customer Review Input"]
-            CodePrompt["Natural Language Code Description"]
-            FileStorage["Generated Files Storage"]
+            FileStorage1["Generated Emails Storage"]
             
             ReviewInput --> EmailGen
-            CodePrompt --> CodeGen
-            EmailGen --> FileStorage
-            CodeGen --> FileStorage
+            EmailGen --> FileStorage1
         end
         
-        subgraph "Web Interface (Django)"
-            Frontend["Frontend (HTML/CSS/JS)"]
-            API["Django REST API"]
-            TailwindCSS["Tailwind CSS"]
-            
-            API --> EmailGen
-            API --> CodeGen
-            TailwindCSS --> Frontend
-            Frontend --> API
+        subgraph "Output"
+            EmailsFolder["Emails Folder"]
+            FileStorage1 --> EmailsFolder
         end
     end
     
-    User["End User"] --> Frontend
-    User --> ReviewInput
-    User --> CodePrompt
-    FileStorage --> User
+    User1["Customer Service Team"] --> ReviewInput
+    EmailsFolder --> User1
+```
+
+#### 2. Development Scenario: Code Generation
+
+```mermaid
+graph TD
+    subgraph "Developer Productivity Application"
+        subgraph "Backend Components"
+            OpenAIAPI2[OpenAI API]
+            GPT2["GPT-3.5/4 Models"]
+            APIKey2["API Key Management"]
+            
+            OpenAIAPI2 --> GPT2
+            APIKey2 --> OpenAIAPI2
+        end
+        
+        subgraph "Core Functionality"
+            CodeGen["Code Generation Engine"]
+            GPT2 --> CodeGen
+        end
+        
+        subgraph "Data Processing"
+            CodePrompt["Natural Language Code Description"]
+            FileStorage2["Generated Code Storage"]
+            
+            CodePrompt --> CodeGen
+            CodeGen --> FileStorage2
+        end
+        
+        subgraph "Output"
+            CodeFolder["Python Code Files"]
+            FileStorage2 --> CodeFolder
+        end
+    end
+    
+    User2["Developer"] --> CodePrompt
+    CodeFolder --> User2
+```
+
+#### 3. Knowledge Management Scenario: Document Processing
+
+```mermaid
+graph TD
+    subgraph "Document Analysis Application"
+        subgraph "Backend Components"
+            OpenAIAPI3[OpenAI API]
+            GPT3["GPT-3.5/4 Models"]
+            APIKey3["API Key Management"]
+            
+            OpenAIAPI3 --> GPT3
+            APIKey3 --> OpenAIAPI3
+        end
+        
+        subgraph "Core Functionality"
+            TextSum["Text Summarization Engine"]
+            TokenCounter["Token Management System"]
+            
+            GPT3 --> TextSum
+            TokenCounter --> TextSum
+        end
+        
+        subgraph "Data Processing"
+            PDFInput["PDF Document Input"]
+            TextExtractor["Text Extraction Tool"]
+            FileStorage3["Generated Summaries Storage"]
+            
+            PDFInput --> TextExtractor
+            TextExtractor --> TokenCounter
+            TextSum --> FileStorage3
+        end
+        
+        subgraph "Output"
+            SummaryFolder["Structured Summaries"]
+            FileStorage3 --> SummaryFolder
+        end
+    end
+    
+    User3["Research Team"] --> PDFInput
+    SummaryFolder --> User3
 ```
 
 ---
@@ -95,6 +161,7 @@ graph TD
 
 - Show the import section of the notebook
 - Explain key libraries:
+
   ```python
   from openai import OpenAI
   import pandas as pd
@@ -102,6 +169,7 @@ graph TD
   from IPython.display import Image, Markdown, display
   import os
   ```
+
 - Briefly explain why each is important for the demo
 
 ### API Configuration (3 minutes)
@@ -115,8 +183,9 @@ graph TD
 
 ## Part 2: Email Generation from Customer Reviews (15 minutes)
 
-### Introduction to Use Case (2 minutes)
+### Business Scenario 1: Customer Service Automation (2 minutes)
 
+- Refer to the Customer Service architecture diagram
 - Business problem: Responding to customer reviews efficiently
 - Value proposition: Save time while maintaining personalization
 - Demo structure: From customer reviews to professional emails
@@ -133,6 +202,7 @@ graph TD
 - Demonstrate the API call to OpenAI
 - Explain the system prompt and importance of clear instructions
 - Show how the email generation function works:
+
   ```python
   def getMail(review):
       chat_history = chat.copy()
@@ -159,8 +229,9 @@ graph TD
 
 ## Part 3: Code Generation from Natural Language (15 minutes)
 
-### Introduction to Use Case (2 minutes)
+### Business Scenario 2: Developer Productivity (2 minutes)
 
+- Refer to the Developer Productivity architecture diagram
 - Business problem: Streamlining development process
 - Value proposition: From requirement to working code
 - Use cases: Prototyping, solving common problems, learning
@@ -168,6 +239,7 @@ graph TD
 ### Code Generation Function (3 minutes)
 
 - Walk through the code generation function:
+
   ```python
   def generate_python_code(description):
       system_prompt = """You are an expert Python programmer..."""
@@ -181,6 +253,7 @@ graph TD
       )
       return response.choices[0].message.content
   ```
+
 - Explain the importance of the system prompt for quality results
 
 ### Demonstrations (10 minutes)
@@ -198,14 +271,86 @@ graph TD
 
 ---
 
+## Part 4: Document Processing and Summarization (10 minutes)
+
+### Business Scenario 3: Knowledge Management (2 minutes)
+
+- Refer to the Document Analysis architecture diagram
+- Business problem: Extracting key information from lengthy documents
+- Value proposition: Quickly digest research papers, reports, and technical documents
+- Demo structure: From PDF processing to concise, structured summaries
+
+### PDF Processing and Token Analysis (3 minutes)
+
+- Show how to:
+  - Download and process PDF files
+  - Extract text from PDFs using PyPDF
+  - Count tokens to manage API limitations
+
+```python
+def num_tokens_from_string(text, encoding_name):
+    encoding = tiktoken.get_encoding(encoding_name)
+    num_tokens = len(encoding.encode(text))
+    return num_tokens
+```
+
+- Explain the importance of token management for cost control and efficiency
+
+### Advanced Summarization Techniques (5 minutes)
+
+- Demonstrate the text summarization function:
+
+```python
+def summarize_text(text, max_tokens=4000):
+    # Truncate text if it's too long
+    encoding = tiktoken.get_encoding('cl100k_base')
+    tokens = encoding.encode(text)
+    
+    if len(tokens) > max_tokens:
+        print(f"⚠️ Text is too long ({len(tokens)} tokens). Truncating to {max_tokens} tokens.")
+        truncated_tokens = tokens[:max_tokens]
+        text = encoding.decode(truncated_tokens)
+    
+    # Create system and user messages with specific instruction for structure
+    system_message = """You are an expert at summarizing..."""
+    user_message = f"""Please provide a clear summary with these sections:
+    1. Main Topic and Purpose
+    2. Key Concepts Introduced
+    3. Methodology
+    4. Main Findings or Contributions"""
+    
+    # Generate the summary using OpenAI API
+    chat_messages = [...]
+    response = client.chat.completions.create(...)
+    
+    return response.choices[0].message.content
+```
+
+- Show organized file structure with dedicated folder for summaries
+- Explain how system prompts create structured, consistent summaries
+
+### Business Use Cases for Summarization (3 minutes)
+
+- Show example summarized content:
+  - Research paper (Attention is All You Need)
+  - Company brochures or reports
+- Discuss business applications:
+  - Research acceleration for academic or R&D teams
+  - Knowledge management for organizations
+  - Competitive intelligence analysis
+  - Due diligence automation
+
+---
+
 ## Conclusion (5 minutes)
 
-### Recap of Demonstrated Capabilities (2 minutes)
+### Recap of Business Scenarios (2 minutes)
 
-- Summarize what we've demonstrated:
-  - Email generation for customer service
-  - Code generation for development tasks
-  - The power of properly structured prompts
+- Summarize the three business scenarios we've demonstrated:
+  1. **Customer Service Automation**: Email generation for efficient, consistent customer responses
+  2. **Developer Productivity**: Code generation from natural language for faster development
+  3. **Knowledge Management**: Text summarization for extracting insights from documents
+- Highlight how each scenario leverages the power of properly structured prompts
 
 ### Potential Business Applications (2 minutes)
 
@@ -251,18 +396,26 @@ graph TD
 
 ## Example Demonstrations
 
-### Email Generation Examples
+### Business Scenario 1: Email Generation Examples
 
 - Positive product review: Hiking boots or headphones example
 - Mixed review: Jacket with sizing issues
 - Detailed review: Smart watch with multiple points
 
-### Code Generation Examples
+### Business Scenario 2: Code Generation Examples
 
 - Data analysis: Sales data processing function
 - Algorithm: Binary search implementation
 - Utility function: Text analysis or data transformation
 
+### Business Scenario 3: Document Summarization Examples
+
+- Academic paper: Attention is All You Need (transformer architecture)
+- Marketing material: Travel brochures for various cities
+- Technical documentation: API documentation or user manuals
+
 ---
 
-_Note: This script is flexible - adjust timing based on audience engagement and questions_
+### Flexibility Note
+
+This script is flexible - adjust timing based on audience engagement and questions.

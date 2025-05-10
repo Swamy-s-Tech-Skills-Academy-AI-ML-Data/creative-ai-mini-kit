@@ -24,86 +24,131 @@
 - Explain what the Creative AI Mini Kit is:
   - A compact toolkit leveraging OpenAI's models
   - Built for AI-driven creativity and efficiency
-  - Includes features for email response automation, code generation, and more
+  - Includes features for email response automation, code generation, and document processing
 - Briefly explain the tech stack:
   - Python with OpenAI API
   - Django web application (optional mention if time permits)
+- Introduce the three business scenarios we'll demonstrate:
+  1. Customer service email automation
+  2. Developer productivity with code generation
+  3. Knowledge management with document summarization
 
-### Architecture Diagram
+### Architecture Diagrams
+
+#### 1. Customer Service Scenario: Email Response Automation
 
 ```mermaid
 graph TD
-    subgraph "Creative AI Mini Kit"
+    subgraph "Customer Service Application"
         subgraph "Backend Components"
-            OpenAIAPI[OpenAI API]
-            GPT["GPT-3.5/4 Models"]
-            DALLE["DALL-E 3 Model"]
+            OpenAIAPI1[OpenAI API]
+            GPT1["GPT-3.5/4 Models"]
+            APIKey1["API Key Management"]
             
-            APIKey["API Key Management"]
-            
-            OpenAIAPI --> GPT
-            OpenAIAPI --> DALLE
-            APIKey --> OpenAIAPI
+            OpenAIAPI1 --> GPT1
+            APIKey1 --> OpenAIAPI1
         end
         
-        subgraph "Core Functionalities"
+        subgraph "Core Functionality"
             EmailGen["Email Generation Engine"]
-            CodeGen["Code Generation Engine"]
-            TextSum["Text Summarization"]
-            ImgGen["Image Generation"]
-            
-            GPT --> EmailGen
-            GPT --> CodeGen
-            GPT --> TextSum
-            DALLE --> ImgGen
+            GPT1 --> EmailGen
         end
         
         subgraph "Data Processing"
             ReviewInput["Customer Review Input"]
-            CodePrompt["Natural Language Code Description"]
-            PDFInput["PDF Document Input"]
-            FileStorage["Generated Files Storage"]
+            FileStorage1["Generated Emails Storage"]
             
             ReviewInput --> EmailGen
-            CodePrompt --> CodeGen
-            PDFInput --> TextSum
-            EmailGen --> FileStorage
-            CodeGen --> FileStorage
-            TextSum --> FileStorage
+            EmailGen --> FileStorage1
         end
         
-        subgraph "Output Organization"
+        subgraph "Output"
             EmailsFolder["Emails Folder"]
-            CodeFolder["Code Folder"]
-            PDFsFolder["PDFs Folder"]
-            SummaryFolder["PDFs Summary Folder"]
-            
-            FileStorage --> EmailsFolder
-            FileStorage --> CodeFolder
-            FileStorage --> PDFsFolder
-            FileStorage --> SummaryFolder
-        end
-        
-        subgraph "Web Interface (Django)"
-            Frontend["Frontend (HTML/CSS/JS)"]
-            API["Django REST API"]
-            TailwindCSS["Tailwind CSS"]
-            
-            API --> EmailGen
-            API --> CodeGen
-            API --> TextSum
-            TailwindCSS --> Frontend
-            Frontend --> API
+            FileStorage1 --> EmailsFolder
         end
     end
     
-    User["End User"] --> Frontend
-    User --> ReviewInput
-    User --> CodePrompt
-    User --> PDFInput
-    EmailsFolder --> User
-    CodeFolder --> User
-    SummaryFolder --> User
+    User1["Customer Service Team"] --> ReviewInput
+    EmailsFolder --> User1
+```
+
+#### 2. Development Scenario: Code Generation
+
+```mermaid
+graph TD
+    subgraph "Developer Productivity Application"
+        subgraph "Backend Components"
+            OpenAIAPI2[OpenAI API]
+            GPT2["GPT-3.5/4 Models"]
+            APIKey2["API Key Management"]
+            
+            OpenAIAPI2 --> GPT2
+            APIKey2 --> OpenAIAPI2
+        end
+        
+        subgraph "Core Functionality"
+            CodeGen["Code Generation Engine"]
+            GPT2 --> CodeGen
+        end
+        
+        subgraph "Data Processing"
+            CodePrompt["Natural Language Code Description"]
+            FileStorage2["Generated Code Storage"]
+            
+            CodePrompt --> CodeGen
+            CodeGen --> FileStorage2
+        end
+        
+        subgraph "Output"
+            CodeFolder["Python Code Files"]
+            FileStorage2 --> CodeFolder
+        end
+    end
+    
+    User2["Developer"] --> CodePrompt
+    CodeFolder --> User2
+```
+
+#### 3. Knowledge Management Scenario: Document Processing
+
+```mermaid
+graph TD
+    subgraph "Document Analysis Application"
+        subgraph "Backend Components"
+            OpenAIAPI3[OpenAI API]
+            GPT3["GPT-3.5/4 Models"]
+            APIKey3["API Key Management"]
+            
+            OpenAIAPI3 --> GPT3
+            APIKey3 --> OpenAIAPI3
+        end
+        
+        subgraph "Core Functionality"
+            TextSum["Text Summarization Engine"]
+            TokenCounter["Token Management System"]
+            
+            GPT3 --> TextSum
+            TokenCounter --> TextSum
+        end
+        
+        subgraph "Data Processing"
+            PDFInput["PDF Document Input"]
+            TextExtractor["Text Extraction Tool"]
+            FileStorage3["Generated Summaries Storage"]
+            
+            PDFInput --> TextExtractor
+            TextExtractor --> TokenCounter
+            TextSum --> FileStorage3
+        end
+        
+        subgraph "Output"
+            SummaryFolder["Structured Summaries"]
+            FileStorage3 --> SummaryFolder
+        end
+    end
+    
+    User3["Research Team"] --> PDFInput
+    SummaryFolder --> User3
 ```
 
 ---
@@ -136,8 +181,9 @@ graph TD
 
 ## Part 2: Email Generation from Customer Reviews (15 minutes)
 
-### Introduction to Use Case (2 minutes)
+### Business Scenario 1: Customer Service Automation (2 minutes)
 
+- Refer to the Customer Service architecture diagram
 - Business problem: Responding to customer reviews efficiently
 - Value proposition: Save time while maintaining personalization
 - Demo structure: From customer reviews to professional emails
@@ -181,8 +227,9 @@ graph TD
 
 ## Part 3: Code Generation from Natural Language (15 minutes)
 
-### Introduction to Use Case (2 minutes)
+### Business Scenario 2: Developer Productivity (2 minutes)
 
+- Refer to the Developer Productivity architecture diagram
 - Business problem: Streamlining development process
 - Value proposition: From requirement to working code
 - Use cases: Prototyping, solving common problems, learning
@@ -224,13 +271,14 @@ graph TD
 
 ## Part 4: Document Processing and Summarization (10 minutes)
 
-### PDF Text Extraction and Analysis (2 minutes)
+### Business Scenario 3: Knowledge Management (2 minutes)
 
+- Refer to the Document Analysis architecture diagram
 - Business problem: Extracting key information from lengthy documents
 - Value proposition: Quickly digest research papers, reports, and technical documents
 - Demo structure: From PDF processing to concise, structured summaries
 
-### Token Counting and Management (3 minutes)
+### PDF Processing and Token Analysis (3 minutes)
 
 - Show how to:
   - Download and process PDF files

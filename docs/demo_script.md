@@ -61,12 +61,27 @@ graph TD
         subgraph "Data Processing"
             ReviewInput["Customer Review Input"]
             CodePrompt["Natural Language Code Description"]
+            PDFInput["PDF Document Input"]
             FileStorage["Generated Files Storage"]
             
             ReviewInput --> EmailGen
             CodePrompt --> CodeGen
+            PDFInput --> TextSum
             EmailGen --> FileStorage
             CodeGen --> FileStorage
+            TextSum --> FileStorage
+        end
+        
+        subgraph "Output Organization"
+            EmailsFolder["Emails Folder"]
+            CodeFolder["Code Folder"]
+            PDFsFolder["PDFs Folder"]
+            SummaryFolder["PDFs Summary Folder"]
+            
+            FileStorage --> EmailsFolder
+            FileStorage --> CodeFolder
+            FileStorage --> PDFsFolder
+            FileStorage --> SummaryFolder
         end
         
         subgraph "Web Interface (Django)"
@@ -76,6 +91,7 @@ graph TD
             
             API --> EmailGen
             API --> CodeGen
+            API --> TextSum
             TailwindCSS --> Frontend
             Frontend --> API
         end
@@ -84,7 +100,10 @@ graph TD
     User["End User"] --> Frontend
     User --> ReviewInput
     User --> CodePrompt
-    FileStorage --> User
+    User --> PDFInput
+    EmailsFolder --> User
+    CodeFolder --> User
+    SummaryFolder --> User
 ```
 
 ---
@@ -95,6 +114,7 @@ graph TD
 
 - Show the import section of the notebook
 - Explain key libraries:
+
   ```python
   from openai import OpenAI
   import pandas as pd
@@ -102,6 +122,7 @@ graph TD
   from IPython.display import Image, Markdown, display
   import os
   ```
+
 - Briefly explain why each is important for the demo
 
 ### API Configuration (3 minutes)
@@ -133,6 +154,7 @@ graph TD
 - Demonstrate the API call to OpenAI
 - Explain the system prompt and importance of clear instructions
 - Show how the email generation function works:
+
   ```python
   def getMail(review):
       chat_history = chat.copy()
@@ -168,6 +190,7 @@ graph TD
 ### Code Generation Function (3 minutes)
 
 - Walk through the code generation function:
+
   ```python
   def generate_python_code(description):
       system_prompt = """You are an expert Python programmer..."""
@@ -181,6 +204,7 @@ graph TD
       )
       return response.choices[0].message.content
   ```
+
 - Explain the importance of the system prompt for quality results
 
 ### Demonstrations (10 minutes)
@@ -198,6 +222,76 @@ graph TD
 
 ---
 
+## Part 4: Document Processing and Summarization (10 minutes)
+
+### PDF Text Extraction and Analysis (2 minutes)
+
+- Business problem: Extracting key information from lengthy documents
+- Value proposition: Quickly digest research papers, reports, and technical documents
+- Demo structure: From PDF processing to concise, structured summaries
+
+### Token Counting and Management (3 minutes)
+
+- Show how to:
+  - Download and process PDF files
+  - Extract text from PDFs using PyPDF
+  - Count tokens to manage API limitations
+
+```python
+def num_tokens_from_string(text, encoding_name):
+    encoding = tiktoken.get_encoding(encoding_name)
+    num_tokens = len(encoding.encode(text))
+    return num_tokens
+```
+
+- Explain the importance of token management for cost control and efficiency
+
+### Advanced Summarization Techniques (5 minutes)
+
+- Demonstrate the text summarization function:
+
+```python
+def summarize_text(text, max_tokens=4000):
+    # Truncate text if it's too long
+    encoding = tiktoken.get_encoding('cl100k_base')
+    tokens = encoding.encode(text)
+    
+    if len(tokens) > max_tokens:
+        print(f"⚠️ Text is too long ({len(tokens)} tokens). Truncating to {max_tokens} tokens.")
+        truncated_tokens = tokens[:max_tokens]
+        text = encoding.decode(truncated_tokens)
+    
+    # Create system and user messages with specific instruction for structure
+    system_message = """You are an expert at summarizing..."""
+    user_message = f"""Please provide a clear summary with these sections:
+    1. Main Topic and Purpose
+    2. Key Concepts Introduced
+    3. Methodology
+    4. Main Findings or Contributions"""
+    
+    # Generate the summary using OpenAI API
+    chat_messages = [...]
+    response = client.chat.completions.create(...)
+    
+    return response.choices[0].message.content
+```
+
+- Show organized file structure with dedicated folder for summaries
+- Explain how system prompts create structured, consistent summaries
+
+### Business Use Cases for Summarization (3 minutes)
+
+- Show example summarized content:
+  - Research paper (Attention is All You Need)
+  - Company brochures or reports
+- Discuss business applications:
+  - Research acceleration for academic or R&D teams
+  - Knowledge management for organizations
+  - Competitive intelligence analysis
+  - Due diligence automation
+
+---
+
 ## Conclusion (5 minutes)
 
 ### Recap of Demonstrated Capabilities (2 minutes)
@@ -205,6 +299,7 @@ graph TD
 - Summarize what we've demonstrated:
   - Email generation for customer service
   - Code generation for development tasks
+  - Text summarization for document processing
   - The power of properly structured prompts
 
 ### Potential Business Applications (2 minutes)
@@ -265,4 +360,6 @@ graph TD
 
 ---
 
-_Note: This script is flexible - adjust timing based on audience engagement and questions_
+### Flexibility Note
+
+This script is flexible - adjust timing based on audience engagement and questions.
